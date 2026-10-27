@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { getArticles, mediaUrl, relation } from '@/lib/strapi';
 
@@ -7,14 +8,15 @@ function dateLabel(date?: string | null) {
 }
 
 export default async function HomePage() {
-  const { articles, connected } = await getArticles();
+  const articles = await getArticles();
   const [featured, ...rest] = articles;
+  const featuredCover = featured ? mediaUrl(featured.cover) : null;
 
   return (
     <main>
       <section className="intro-band">
         <div className="intro-inner">
-          <p className="eyebrow"><span className={`status-dot ${connected ? 'is-live' : ''}`} />{connected ? 'LIVE FROM STRAPI' : 'STRAPI OFFLINE'}</p>
+          <p className="eyebrow">FIELDNOTES</p>
           <h1>Ideas worth<br /><em>growing.</em></h1>
           <p className="intro-copy">Notes on people, progress, and the small things that move us forward.</p>
           <div className="intro-index">VOL. 01 <span>·</span> THE JOURNAL</div>
@@ -37,13 +39,7 @@ export default async function HomePage() {
           <span className="article-count">{String(articles.length).padStart(2, '0')} STORIES</span>
         </div>
 
-        {!connected ? (
-          <div className="empty-state">
-            <span className="empty-index">01 / CONNECTION</span>
-            <h3>Can’t reach the journal right now.</h3>
-            <p>Make sure Strapi is running at <code>localhost:1337</code>, then refresh this page.</p>
-          </div>
-        ) : articles.length === 0 ? (
+        {articles.length === 0 ? (
           <div className="empty-state">
             <span className="empty-index">01 / FIRST ENTRY</span>
             <h3>The next story starts in the CMS.</h3>
@@ -54,8 +50,10 @@ export default async function HomePage() {
           <div className="story-layout">
             {featured && (
               <article className="featured-story">
-                <Link className="featured-image" href={`/articles/${featured.slug || ''}`} style={mediaUrl(featured.cover) ? { backgroundImage: `url("${mediaUrl(featured.cover)}")` } : undefined}>
-                  {!mediaUrl(featured.cover) && <span className="image-placeholder">FIELD<br />STUDY <span>№ 01</span></span>}
+                <Link className="featured-image" href={`/articles/${featured.slug || ''}`}>
+                  {featuredCover
+                    ? <Image className="cover-image" src={featuredCover} alt="" fill sizes="(max-width: 760px) 100vw, 55vw" priority />
+                    : <span className="image-placeholder">FIELD<br />STUDY <span>№ 01</span></span>}
                   <span className="image-arrow" aria-hidden="true">↗</span>
                 </Link>
                 <div className="story-meta">

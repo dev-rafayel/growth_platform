@@ -1,9 +1,15 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getArticle, mediaUrl, relation } from '@/lib/strapi';
+import { getArticle, getArticles, mediaUrl, relation } from '@/lib/strapi';
+import type { Props } from './types';
 
-type Props = { params: Promise<{ slug: string }> };
+// Pre-render every article at build; ones published later render on first visit.
+export async function generateStaticParams() {
+  const articles = await getArticles();
+  return articles.filter((article) => article.slug).map((article) => ({ slug: article.slug as string }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -28,8 +34,10 @@ export default async function ArticlePage({ params }: Props) {
           <h1>{article.title || 'Untitled story'}</h1>
           {article.description && <p className="article-deck">{article.description}</p>}
         </header>
-        <div className={`article-cover ${cover ? 'has-cover' : ''}`} style={cover ? { backgroundImage: `url("${cover}")` } : undefined}>
-          {!cover && <span className="image-placeholder">FIELD STUDY <span>GROWTH PLATFORM JOURNAL</span></span>}
+        <div className={`article-cover ${cover ? 'has-cover' : ''}`}>
+          {cover
+            ? <Image className="cover-image" src={cover} alt="" fill sizes="100vw" priority />
+            : <span className="image-placeholder">FIELD STUDY <span>GROWTH PLATFORM JOURNAL</span></span>}
         </div>
         <div className="article-body">
           {blocks.length > 0 ? blocks.map((block, index) => {
