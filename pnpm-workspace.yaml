@@ -1,0 +1,6 @@
+allowBuilds:
+  unrs-resolver: true
+
+# Expose ESLint plugins at the top of node_modules so the VS Code ESLint server can resolve them
+publicHoistPattern:
+  - "*eslint*"
