@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getArticle, getArticles, mediaUrl, relation } from '@/lib/strapi';
+import { getArticle, getArticles, mediaUrl } from '@/lib/strapi/strapi';
 import type { Props } from './types';
 
 // Pre-render every article at build; ones published later render on first visit.
@@ -30,7 +30,7 @@ export default async function ArticlePage({ params }: Props) {
       <Link href="/" className="back-link">← BACK TO JOURNAL</Link>
       <article>
         <header className="article-header">
-          <div className="story-meta"><span>{relation(article.category)?.name || 'Journal'}</span><span>{relation(article.author)?.name || 'The Editors'}</span></div>
+          <div className="story-meta"><span>{article.category?.name || 'Journal'}</span><span>{article.author?.name || 'The Editors'}</span></div>
           <h1>{article.title || 'Untitled story'}</h1>
           {article.description && <p className="article-deck">{article.description}</p>}
         </header>

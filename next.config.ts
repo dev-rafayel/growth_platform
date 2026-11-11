@@ -1,5 +1,5 @@
 import type { NextConfig } from 'next';
-import { STRAPI_URL } from './lib/constants';
+import { STRAPI_URL } from './lib/strapi/constants';
 
 const strapi = new URL(STRAPI_URL);
 

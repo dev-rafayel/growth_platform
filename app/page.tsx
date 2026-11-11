@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getArticles, mediaUrl, relation } from '@/lib/strapi';
+import { getArticles, mediaUrl } from '@/lib/strapi/strapi';
 
 function dateLabel(date?: string | null) {
   if (!date) return 'Recently published';
@@ -10,7 +10,7 @@ function dateLabel(date?: string | null) {
 export default async function HomePage() {
   const articles = await getArticles();
   const [featured, ...rest] = articles;
-  const featuredCover = featured ? mediaUrl(featured.cover) : null;
+  const featuredCover = featured ? mediaUrl(featured.cover) : null; 
 
   return (
     <main>
@@ -57,12 +57,12 @@ export default async function HomePage() {
                   <span className="image-arrow" aria-hidden="true">↗</span>
                 </Link>
                 <div className="story-meta">
-                  <span>{relation(featured.category)?.name || 'Journal'}</span>
+                  <span>{featured.category?.name || 'Journal'}</span>
                   <span>{dateLabel(featured.publishedAt)}</span>
                 </div>
                 <h3 className="featured-title"><Link href={`/articles/${featured.slug || ''}`}>{featured.title || 'Untitled story'}</Link></h3>
                 <p className="story-description">{featured.description}</p>
-                <p className="story-author">WORDS BY <strong>{relation(featured.author)?.name || 'THE EDITORS'}</strong></p>
+                <p className="story-author">WORDS BY <strong>{featured.author?.name || 'THE EDITORS'}</strong></p>
               </article>
             )}
             <div className="story-list">
@@ -70,7 +70,7 @@ export default async function HomePage() {
                 <article className="story-row" key={article.documentId || article.id || article.slug}>
                   <span className="row-number">{String(index + 2).padStart(2, '0')}</span>
                   <div className="row-content">
-                    <div className="story-meta"><span>{relation(article.category)?.name || 'Journal'}</span><span>{dateLabel(article.publishedAt)}</span></div>
+                    <div className="story-meta"><span>{article.category?.name || 'Journal'}</span><span>{dateLabel(article.publishedAt)}</span></div>
                     <h3><Link href={`/articles/${article.slug || ''}`}>{article.title || 'Untitled story'}</Link></h3>
                     <p>{article.description}</p>
                   </div>
