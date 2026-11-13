@@ -35,6 +35,7 @@ export type HeroSection = {
   title: string;
   description?: string;
   buttonText?: string;
+  buttonUrl?: string;
   __component: 'landing-page.hero';
 }
 
