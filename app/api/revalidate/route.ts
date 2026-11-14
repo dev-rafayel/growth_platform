@@ -10,7 +10,5 @@ export async function POST(request: Request) {
   }
 
   revalidateTag(STRAPI_CACHE_TAG);
-  const result = Response.json({ revalidated: true });
-  console.log(result);
   return Response.json({ revalidated: true });
 }
