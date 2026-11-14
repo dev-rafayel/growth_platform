@@ -34,15 +34,16 @@ export type Seo = {
   id: number;
   metaTitle: string;
   metaDescription: string;
-  shareImage?: Media | null;
+  shareImage: Media | null;
 };
 
 export type HeroSection = {
   id: number;
   title: string;
-  description?: string;
-  buttonText?: string;
-  buttonUrl?: string;
+  description: string | null;
+  buttonText: string;
+  buttonUrl: string;
+  background: Media | null;
   __component: 'landing-page.hero';
 };
 
@@ -50,25 +51,25 @@ export type AuctionRowSection = {
   id: number;
   title: string;
   source: 'ending_soon' | 'newest';
-  limit?: number;
-  linkText?: string;
-  linkUrl?: string;
+  limit: number | null;
+  linkText: string | null;
+  linkUrl: string | null;
   __component: 'landing-page.auction-row';
 };
 
 export type CategoryGridSection = {
   id: number;
   title: string;
-  limit?: number;
-  linkText?: string;
-  linkUrl?: string;
+  limit: number | null;
+  linkText: string | null;
+  linkUrl: string | null;
   __component: 'landing-page.category-grid';
 };
 
 export type CtaBandSection = {
   id: number;
   title: string;
-  description?: string;
+  description: string | null;
   buttonText: string;
   buttonUrl: string;
   __component: 'landing-page.cta-band';
@@ -102,6 +103,6 @@ export type LandingPage = {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  seo: Seo;
+  seo: Seo | null;
   sections: Array<Section>;
 };
