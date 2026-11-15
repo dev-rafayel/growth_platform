@@ -17,11 +17,11 @@ const eslintConfig = [
       'prefer-const': 'warn',
       'no-unreachable': 'error',
       'no-duplicate-imports': 'error',
-      'no-empty': ['error', 'always'],
+      'no-empty': 'error',
       'semi': ['error', 'always'],
       'quotes': ['error', 'single'],
       'indent': ['error', 2],
-      'no-console': 'warn',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
       'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 1, 'maxBOF': 0 }],
     }
   }
