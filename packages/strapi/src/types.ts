@@ -4,10 +4,22 @@ export type Media = {
   url?: string;
   alternativeText?: string | null;
   formats?: Record<string, { url: string }>;
+  name?: string;
+  mime?: string;
+  width?: number | null;
+  height?: number | null;
+};
+
+export type Pagination = {
+  page: number;
+  pageSize: number;
+  pageCount: number;
+  total: number;
 };
 
 export type CollectionResponse<T> = {
   data: Array<T>;
+  meta?: { pagination?: Pagination };
 };
 
 export type Seo = {

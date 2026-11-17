@@ -2,6 +2,8 @@ import type { NextConfig } from 'next';
 
 // Read the env directly: next.config is loaded before workspace packages are transpiled.
 const strapi = new URL(process.env.STRAPI_URL || 'http://localhost:1337');
+// apps/blog, served under /blog on this domain (Next.js Multi-Zones).
+const blogUrl = (process.env.BLOG_URL || 'http://localhost:3000').replace(/\/$/, '');
 
 const nextConfig: NextConfig = {
   // @growth/strapi ships TypeScript sources, so Next compiles it like app code.
@@ -15,6 +17,13 @@ const nextConfig: NextConfig = {
     }],
     // Keep optimized covers for 30 days so they survive Strapi downtime.
     minimumCacheTTL: 60 * 60 * 24 * 30,
+  },
+  // Checked before dynamic routes, so app/[slug] never catches /blog.
+  async rewrites() {
+    return [
+      { source: '/blog', destination: `${blogUrl}/blog` },
+      { source: '/blog/:path+', destination: `${blogUrl}/blog/:path+` },
+    ];
   },
 };
 
