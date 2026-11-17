@@ -3,7 +3,7 @@ import type { NextConfig } from 'next';
 // Read the env directly: next.config is loaded before workspace packages are transpiled.
 const strapi = new URL(process.env.STRAPI_URL || 'http://localhost:1337');
 // apps/blog, served under /blog on this domain (Next.js Multi-Zones).
-const blogUrl = (process.env.BLOG_URL || 'http://localhost:3000').replace(/\/$/, '');
+const blogUrl = (process.env.BLOG_URL || 'http://localhost:3001').replace(/\/$/, '');
 
 const nextConfig: NextConfig = {
   // @growth/strapi ships TypeScript sources, so Next compiles it like app code.
