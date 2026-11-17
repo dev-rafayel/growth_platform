@@ -1,0 +1,9 @@
+{
+  "extends": "@growth/config/tsconfig.base.json",
+  "compilerOptions": {
+    // Next's types add the `next: { revalidate, tags }` option to fetch.
+    "types": ["node", "next"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"]
+}

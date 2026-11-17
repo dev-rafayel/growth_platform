@@ -1,8 +1,4 @@
-export type Media = {
-  url?: string;
-  alternativeText?: string | null;
-  formats?: Record<string, { url: string }>;
-};
+import type { Media, Seo } from '@growth/strapi';
 
 export type Category = {
   name?: string;
@@ -24,17 +20,6 @@ export type Article = {
   author?: Author | null;
   blocks?: Array<Record<string, unknown>>;
   publishedAt?: string | null;
-};
-
-export type CollectionResponse<T> = {
-  data: Array<T>;
-};
-
-export type Seo = {
-  id: number;
-  metaTitle: string;
-  metaDescription: string;
-  shareImage: Media | null;
 };
 
 export type HeroSection = {

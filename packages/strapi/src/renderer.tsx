@@ -1,8 +1,7 @@
-import type { LandingPage, Section } from './types';
-import { componentRegistration } from './registration';
 import { Fragment, type ReactNode } from 'react';
+import type { Block, Registry } from './types';
 
-export function SectionRenderer({ sections }: { sections: LandingPage['sections'] }) {
+export function SectionRenderer<B extends Block>({ sections, registry }: { sections: B[]; registry: Registry<B> }) {
   if (!sections) {
     console.warn('Sections are empty');
     return null;
@@ -10,8 +9,8 @@ export function SectionRenderer({ sections }: { sections: LandingPage['sections'
 
   return (
     sections.map((block) => {
-      const renderFn = componentRegistration[block.__component] as 
-        (block: Section) => ReactNode;
+      const renderFn = registry[block.__component as B['__component']] as
+        ((block: B) => ReactNode) | undefined;
 
       if (!renderFn) {
         console.warn(`No registry entry for ${block.__component}`);
