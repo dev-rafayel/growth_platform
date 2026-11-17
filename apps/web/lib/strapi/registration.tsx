@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { Registry } from '@growth/strapi';
 import type { Section } from './types';
 import { mapHero } from './mappers/heroMapper';
 import { mapAuctionRow } from './mappers/auctionRowMapper';
@@ -11,12 +11,7 @@ import { CategoryGrid } from '@/components/sections/Category/CategoryGrid';
 import { CtaBand } from '@/components/sections/CTA/CtaBand';
 import { Faq } from '@/components/sections/FAQ/Faq';
 
-// One entry per Strapi component: a block type missing here is a type error.
-type SectionRenderers = {
-  [K in Section['__component']]: (block: Extract<Section, { __component: K }>) => ReactNode;
-};
-
-export const componentRegistration: SectionRenderers = {
+export const componentRegistration: Registry<Section> = {
   'landing-page.hero': (block) => <Hero {...mapHero(block)} />,
   'landing-page.auction-row': (block) => <AuctionRow {...mapAuctionRow(block)} />,
   'landing-page.category-grid': (block) => <CategoryGrid {...mapCategoryGrid(block)} />,

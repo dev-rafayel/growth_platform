@@ -1,0 +1,17 @@
+{
+  "name": "@growth/config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./eslint": "./eslint.config.mjs",
+    "./tsconfig.base.json": "./tsconfig.base.json"
+  },
+  "dependencies": {
+    "@eslint/eslintrc": "^3.3.7",
+    "eslint-config-next": "^15.5.6"
+  },
+  "peerDependencies": {
+    "eslint": "^9.39.5"
+  }
+}

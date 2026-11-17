@@ -2,6 +2,7 @@ import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { FlatCompat } from '@eslint/eslintrc';
 
+// Resolve eslint-config-next from this package, so every workspace shares one copy.
 const compat = new FlatCompat({
   baseDirectory: dirname(fileURLToPath(import.meta.url)),
 });

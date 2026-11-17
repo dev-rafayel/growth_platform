@@ -1,5 +1,5 @@
-import { fetchStrapi } from './client';
-import type { CollectionResponse, LandingPage } from './types';
+import { fetchStrapi, type CollectionResponse } from '@growth/strapi';
+import type { LandingPage } from './types';
 
 export async function getPageBySlug(slug: string): Promise<LandingPage | null> {
   const params = {

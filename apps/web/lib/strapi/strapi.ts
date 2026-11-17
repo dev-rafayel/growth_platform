@@ -1,12 +1,5 @@
-import type { Article, CollectionResponse } from './types';
-import { REVALIDATE, STRAPI_CACHE_TAG, STRAPI_URL } from './constants';
-
-export function mediaUrl(value: Article['cover']): string | null {
-  const url = value?.url;
-  if (!url) return null;
-
-  return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
-}
+import { REVALIDATE, STRAPI_CACHE_TAG, STRAPI_URL, type CollectionResponse } from '@growth/strapi';
+import type { Article } from './types';
 
 export async function getArticles(): Promise<Article[]> {
   // Errors must propagate: a failed refresh then keeps serving the last cached page.

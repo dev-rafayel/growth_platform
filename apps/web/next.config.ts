@@ -1,9 +1,11 @@
 import type { NextConfig } from 'next';
-import { STRAPI_URL } from './lib/strapi/constants';
 
-const strapi = new URL(STRAPI_URL);
+// Read the env directly: next.config is loaded before workspace packages are transpiled.
+const strapi = new URL(process.env.STRAPI_URL || 'http://localhost:1337');
 
 const nextConfig: NextConfig = {
+  // @growth/strapi ships TypeScript sources, so Next compiles it like app code.
+  transpilePackages: ['@growth/strapi'],
   images: {
     remotePatterns: [{
       protocol: strapi.protocol.replace(':', '') as 'http' | 'https',

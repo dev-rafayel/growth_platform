@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getArticles, mediaUrl } from '@/lib/strapi/strapi';
+import { mediaUrl } from '@growth/strapi';
+import { getArticles } from '@/lib/strapi/strapi';
 
 function dateLabel(date?: string | null) {
   if (!date) return 'Recently published';
