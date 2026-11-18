@@ -13,7 +13,11 @@ const summaryParams = {
   'populate[author][populate][avatar]': 'true',
 };
 
-export async function getPosts(page: number): Promise<{ posts: BlogPostSummary[]; pagination: Pagination | null }> {
+export async function getPosts(page: number): 
+  Promise<{ 
+    posts: BlogPostSummary[]; 
+    pagination: Pagination | null 
+  }> {
   const params = {
     ...summaryParams,
     'sort[0]': 'publishedAt:desc',
@@ -25,7 +29,8 @@ export async function getPosts(page: number): Promise<{ posts: BlogPostSummary[]
   return { posts: res.data, pagination: res.meta?.pagination ?? null };
 }
 
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+export async function getPostBySlug(slug: string): 
+  Promise<BlogPost | null> {
   const params = {
     'filters[slug][$eq]': slug,
     'populate[cover]': 'true',
@@ -35,6 +40,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     'populate[seo][populate]': '*',
   };
 
-  const res = await fetchStrapi<CollectionResponse<BlogPost>>('/api/articles', params);
+  const res = await fetchStrapi<CollectionResponse<BlogPost>>
+  ('/api/articles', params);
   return res.data[0] ?? null;
 }
