@@ -34,7 +34,9 @@ export function mapAuctionRow(section: AuctionRowSection): AuctionRowProps {
   return {
     title: section.title,
     source: section.source,
-    link: section.linkText && section.linkUrl ? { text: section.linkText, url: section.linkUrl } : null,
-    items: (section.items ?? []).map(mapAuctionCard),
+    link: section.linkText && section.linkUrl 
+      ? { text: section.linkText, url: section.linkUrl } : null,
+    items: (section.items ?? [])
+      .map(mapAuctionCard),
   };
 }
