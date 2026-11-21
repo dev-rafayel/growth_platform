@@ -20,7 +20,8 @@ function mapAuctionCard(card: AuctionCard): AuctionCardProps {
   return {
     id: card.id,
     title: card.title,
-    image: imageSrc ? { src: imageSrc, alt: card.image?.alternativeText ?? card.title } : null,
+    image: imageSrc ? { src: imageSrc, 
+      alt: card.image?.alternativeText ?? card.title } : null,
     category: card.category,
     url: card.auctionUrl,
     price: toNumber(card.price),
