@@ -2,8 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { HeroProps } from './types';
 
-// tmp file for testing Hero component
-export function Hero({ title, description, buttonText, buttonUrl, background }: HeroProps) {
+export function Hero({ 
+  title, 
+  description, 
+  buttonText, 
+  buttonUrl, 
+  background 
+}: HeroProps) {
   return (
     <section className="hero">
       {background && (

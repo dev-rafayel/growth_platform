@@ -8,7 +8,8 @@ import type { Props } from './types';
 
 export default async function LandingPage({ params }: Props) {
   const { slug } = await params;
-  const [page, global] = await Promise.all([getPageBySlug(slug), getGlobal()]);
+  const [page, global] = 
+    await Promise.all([getPageBySlug(slug), getGlobal()]);
   if (!page) notFound();
 
   const seo = page.seo ?? 
@@ -26,30 +27,52 @@ export default async function LandingPage({ params }: Props) {
   return (
     <main>
       <title>{title}</title>
-      <meta name="description" 
-        content={description} />
-      <link rel="canonical" 
-        href={url} />
+      <meta 
+        name="description" 
+        content={description} 
+      />
+      <link 
+        rel="canonical" 
+        href={url} 
+      />
       <meta name="robots" 
-        content={robots} />
-
-      <meta property="og:type" 
-        content="website" />
-      <meta property="og:title" 
-        content={title} />
-      <meta property="og:description" 
-        content={description} />
-      <meta property="og:url" 
-        content={url} />
-      {image && <meta property="og:image" 
-        content={image} />}
+        content={robots} 
+      />
+      <meta 
+        property="og:type" 
+        content="website" 
+      />
+      <meta 
+        property="og:title" 
+        content={title} 
+      />
+      <meta 
+        property="og:description" 
+        content={description} 
+      />
+      <meta 
+        property="og:url" 
+        content={url} 
+      />
+      {image && 
+        <meta 
+          property="og:image" 
+          content={image} 
+        />}
+      
       {global?.siteName && 
-      <meta property="og:site_name" 
-        content={global.siteName} />}
-      <meta property="og:locale" 
-        content="en_US" />
-
-      <SectionRenderer sections={page.sections} registry={componentRegistration} />
+      <meta 
+        property="og:site_name" 
+        content={global.siteName} 
+      />}
+      <meta 
+        property="og:locale" 
+        content="en_US" 
+      />
+      <SectionRenderer 
+        sections={page.sections} 
+        registry={componentRegistration} 
+      />
     </main>
   );
 }
