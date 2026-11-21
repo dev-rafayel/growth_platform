@@ -42,7 +42,7 @@ export default async function HomePage() {
         content="website" 
       />
       <meta 
-      property="og:title" 
+        property="og:title" 
         content={title} 
       />
       <meta 
