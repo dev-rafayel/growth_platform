@@ -11,42 +11,42 @@ export default async function LandingPage({ params }: Props) {
   const [page, global] = await Promise.all([getPageBySlug(slug), getGlobal()]);
   if (!page) notFound();
 
-  const seo = page.seo ?? 
+  const seo = page.seo ??
     global?.defaultSeo;
-  const title = seo?.metaTitle ?? 
+  const title = seo?.metaTitle ??
     global?.siteName;
-  const description = seo?.metaDescription ?? 
+  const description = seo?.metaDescription ??
     global?.siteDescription ?? '';
   const image = mediaUrl(seo?.shareImage);
-  const url = seo?.canonicalURL || 
+  const url = seo?.canonicalURL ||
     `${LANDINGS_SSR_URL}/${slug}`;
-  const robots = `${seo?.noIndex ? 'noindex' : 'index'}, 
+  const robots = `${seo?.noIndex ? 'noindex' : 'index'},
     ${seo?.noFollow ? 'nofollow' : 'follow'}`;
 
   return (
     <main>
       <title>{title}</title>
-      <meta name="description" 
+      <meta name="description"
         content={description} />
-      <link rel="canonical" 
+      <link rel="canonical"
         href={url} />
-      <meta name="robots" 
+      <meta name="robots"
         content={robots} />
 
-      <meta property="og:type" 
+      <meta property="og:type"
         content="website" />
-      <meta property="og:title" 
+      <meta property="og:title"
         content={title} />
-      <meta property="og:description" 
+      <meta property="og:description"
         content={description} />
-      <meta property="og:url" 
+      <meta property="og:url"
         content={url} />
-      {image && <meta property="og:image" 
+      {image && <meta property="og:image"
         content={image} />}
-      {global?.siteName && 
-      <meta property="og:site_name" 
+      {global?.siteName &&
+      <meta property="og:site_name"
         content={global.siteName} />}
-      <meta property="og:locale" 
+      <meta property="og:locale"
         content="en_US" />
 
       <SectionRenderer sections={page.sections} registry={componentRegistration} />
