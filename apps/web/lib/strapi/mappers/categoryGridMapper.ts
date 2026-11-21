@@ -1,7 +1,8 @@
 import type { CategoryGridSection } from '../types';
 import type { CategoryGridProps } from '@/components/sections/Category/types';
 
-export function mapCategoryGrid(section: CategoryGridSection): CategoryGridProps {
+export function mapCategoryGrid(section: CategoryGridSection): 
+  CategoryGridProps {
   return {
     title: section.title,
     link: section.linkText && section.linkUrl ? 

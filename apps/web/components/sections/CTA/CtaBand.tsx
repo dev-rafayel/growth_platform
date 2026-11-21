@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import { CtaBandProps } from './types';
 
-export function CtaBand({ title, description, buttonText, buttonUrl }: CtaBandProps) {
+export function CtaBand({ 
+  title, 
+  description, 
+  buttonText, 
+  buttonUrl 
+}: CtaBandProps) {
   return (
     <section className="cta-band">
       <div className="cta-band-inner">

@@ -67,8 +67,10 @@ export default async function HomePage() {
         property="og:locale" 
         content="en_US" 
       />
-
-      <SectionRenderer sections={page.sections} registry={componentRegistration} />
+      <SectionRenderer 
+        sections={page.sections} 
+        registry={componentRegistration} 
+      />
     </main>
   );
 }
