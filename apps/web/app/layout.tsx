@@ -1,11 +1,5 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import './globals.css';
-
-export const metadata: Metadata = {
-  title: 'Fieldnotes | Growth Platform',
-  description: 'Ideas and stories from the Growth Platform journal.',
-};
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
