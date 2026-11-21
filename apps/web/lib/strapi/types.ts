@@ -1,4 +1,4 @@
-import type { Media, Seo } from '@growth/strapi';
+import type { Link, Media, Seo } from '@growth/strapi';
 
 export type Category = {
   name?: string;
@@ -19,6 +19,7 @@ export type Article = {
   category?: Category | null;
   author?: Author | null;
   blocks?: Array<Record<string, unknown>>;
+  seo?: Seo | null;
   publishedAt?: string | null;
 };
 
@@ -32,29 +33,48 @@ export type HeroSection = {
   __component: 'landing-page.hero';
 };
 
+export type AuctionCard = {
+  id: number;
+  title: string;
+  image: Media | null;
+  category: string;
+  auctionUrl: string;
+  price: string;
+  bidCount: string | null;
+  endsAt: string | null;
+  listedAt: string | null;
+};
+
 export type AuctionRowSection = {
   id: number;
   title: string;
   source: 'ending_soon' | 'newest';
-  limit: number | null;
   linkText: string | null;
   linkUrl: string | null;
+  items: Array<AuctionCard>;
   __component: 'landing-page.auction-row';
+};
+
+export type CategoryCard = {
+  id: number;
+  title: string;
+  description: string;
+  categoryUrl: string;
 };
 
 export type CategoryGridSection = {
   id: number;
   title: string;
-  limit: number | null;
   linkText: string | null;
   linkUrl: string | null;
+  items: Array<CategoryCard>;
   __component: 'landing-page.category-grid';
 };
 
 export type CtaBandSection = {
   id: number;
   title: string;
-  description: string | null;
+  description: string;
   buttonText: string;
   buttonUrl: string;
   __component: 'landing-page.cta-band';
@@ -90,4 +110,48 @@ export type LandingPage = {
   publishedAt: string;
   seo: Seo | null;
   sections: Array<Section>;
+};
+
+export type AnnouncementBar = {
+  id: number;
+  text: string;
+  isLive: boolean | null;
+  link: Link | null;
+};
+
+export type Header = {
+  id: number;
+  logo: Media | null;
+  navLinks: Array<Link>;
+  searchPlaceholder: string | null;
+  signInLink: Link | null;
+  joinLink: Link | null;
+};
+
+export type FooterColumn = {
+  id: number;
+  title: string;
+  links: Array<Link>;
+};
+
+export type Footer = {
+  id: number;
+  newsletterLabel: string | null;
+  newsletterPlaceholder: string | null;
+  newsletterButton: string | null;
+  columns: Array<FooterColumn>;
+  copyright: string | null;
+  legalLinks: Array<Link>;
+};
+
+export type Global = {
+  id: number;
+  documentId: string;
+  siteName: string;
+  siteDescription: string;
+  favicon: Media | null;
+  defaultSeo: Seo | null;
+  announcementBar: AnnouncementBar | null;
+  header: Header | null;
+  footer: Footer | null;
 };

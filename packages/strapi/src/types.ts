@@ -15,6 +15,18 @@ export type Seo = {
   metaTitle: string;
   metaDescription: string;
   shareImage: Media | null;
+  canonicalURL: string | null;
+  noIndex: boolean | null;
+  noFollow: boolean | null;
+};
+
+export type Link = {
+  id: number;
+  label: string;
+  url: string;
+  variant: 'accent' | 'dark' | 'outline' | 'text' | null;
+  isExternal: boolean | null;
+  highlight: boolean | null;
 };
 
 export type Block = { id: number; __component: string };
