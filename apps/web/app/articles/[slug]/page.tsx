@@ -9,10 +9,14 @@ import type { Props } from './types';
 // Pre-render every article at build; ones published later render on first visit.
 export async function generateStaticParams() {
   const articles = await getArticles();
-  return articles.filter((article) => article.slug).map((article) => ({ slug: article.slug as string }));
+  return articles
+    .filter((article) => 
+      article.slug).map((article) => 
+      ({ slug: article.slug as string }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): 
+  Promise<Metadata> {
   const { slug } = await params;
   const article = await getArticle(slug);
   return { title: article?.title ? `${article.title} | Fieldnotes` : 'Story | Fieldnotes' };

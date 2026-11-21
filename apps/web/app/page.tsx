@@ -44,7 +44,10 @@ export default async function HomePage() {
           <div className="empty-state">
             <span className="empty-index">01 / FIRST ENTRY</span>
             <h3>The next story starts in the CMS.</h3>
-            <p>Create an article in Strapi, then publish it to see it appear here.</p>
+            <p>
+              Create an article in Strapi, 
+                then publish it to see it appear here.
+            </p>
             <a className="text-link" href="http://localhost:1337/admin" target="_blank" rel="noreferrer">OPEN STRAPI ADMIN <span aria-hidden="true">↗</span></a>
           </div>
         ) : (

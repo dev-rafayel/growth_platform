@@ -1,7 +1,8 @@
 import { fetchStrapi, type CollectionResponse } from '@growth/strapi';
 import type { LandingPage } from './types';
 
-export async function getPageBySlug(slug: string): Promise<LandingPage | null> {
+export async function getPageBySlug(slug: string): 
+  Promise<LandingPage | null> {
   const params = {
     'filters[slug][$eq]': slug,
     'populate[sections][on][landing-page.hero][populate]': '*',

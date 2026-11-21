@@ -1,4 +1,4 @@
-import type { Link, Media, Seo } from '@growth/strapi';
+import type { StrapiLink, Media, Seo } from '@growth/strapi';
 
 export type Category = {
   name?: string;
@@ -39,8 +39,8 @@ export type AuctionCard = {
   image: Media | null;
   category: string;
   auctionUrl: string;
-  price: string;
-  bidCount: string | null;
+  price: number;
+  bidCount: number | null;
   endsAt: string | null;
   listedAt: string | null;
 };
@@ -116,22 +116,22 @@ export type AnnouncementBar = {
   id: number;
   text: string;
   isLive: boolean | null;
-  link: Link | null;
+  link: StrapiLink | null;
 };
 
 export type Header = {
   id: number;
   logo: Media | null;
-  navLinks: Array<Link>;
+  navLinks: Array<StrapiLink>;
   searchPlaceholder: string | null;
-  signInLink: Link | null;
-  joinLink: Link | null;
+  signInLink: StrapiLink | null;
+  joinLink: StrapiLink | null;
 };
 
 export type FooterColumn = {
   id: number;
   title: string;
-  links: Array<Link>;
+  links: Array<StrapiLink>;
 };
 
 export type Footer = {
@@ -141,7 +141,7 @@ export type Footer = {
   newsletterButton: string | null;
   columns: Array<FooterColumn>;
   copyright: string | null;
-  legalLinks: Array<Link>;
+  legalLinks: Array<StrapiLink>;
 };
 
 export type Global = {
