@@ -32,7 +32,7 @@ export type Seo = {
   noFollow: boolean | null;
 };
 
-export type Link = {
+export type StrapiLink = {
   id: number;
   label: string;
   url: string;
