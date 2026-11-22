@@ -9,7 +9,11 @@ type NavLinksProps = {
 function NavItem({ label, url, highlight }: NavLink) {
   const content = (
     <>
-      {highlight && <span className={styles.navDot} aria-hidden="true" />}
+      {highlight && 
+        <span 
+          className={styles.navDot} 
+          aria-hidden="true" 
+        />}
       {label}
     </>
   );

@@ -48,7 +48,10 @@ export function Header({
         {(signInLink || joinLink) && (
           <div className={styles.actions}>
             {signInLink && (
-              <Button href={signInLink.url} variant={signInLink.variant}>
+              <Button 
+                href={signInLink.url} 
+                variant={signInLink.variant}
+              >
                 {signInLink.label}
               </Button>
             )}

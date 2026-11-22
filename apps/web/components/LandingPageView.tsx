@@ -42,7 +42,10 @@ export async function LandingPageView({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
-      {image && <meta property="og:image" content={image} />}
+      {image && 
+        <meta property="og:image" 
+          content={image} 
+        />}
       {global?.siteName && (
         <meta property="og:site_name" content={global.siteName} />
       )}
