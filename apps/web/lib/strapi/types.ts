@@ -1,28 +1,5 @@
 import type { LinkVariant, StrapiLink, Media, Seo } from '@growth/strapi';
 
-export type Category = {
-  name?: string;
-  slug?: string;
-};
-
-export type Author = {
-  name?: string;
-};
-
-export type Article = {
-  id?: number;
-  documentId?: string;
-  title?: string;
-  slug?: string;
-  description?: string;
-  cover?: Media | null;
-  category?: Category | null;
-  author?: Author | null;
-  blocks?: Array<Record<string, unknown>>;
-  seo?: Seo | null;
-  publishedAt?: string | null;
-};
-
 export type HeroSection = {
   id: number;
   title: string;

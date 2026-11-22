@@ -1,1 +1,0 @@
-import { AuctionCardProps } from './types';
