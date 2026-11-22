@@ -10,6 +10,10 @@ export function mapHero(section: HeroSection): HeroProps {
     description: section.description ?? '',
     buttonText: section.buttonText,
     buttonUrl: section.buttonUrl,
-    background: backgroundSrc ? { src: backgroundSrc, alt: '' } : null
+    background: backgroundSrc ?
+    { 
+    src: backgroundSrc, 
+    alt: section.background?.alternativeText ?? '' 
+    } : null
   };
 }

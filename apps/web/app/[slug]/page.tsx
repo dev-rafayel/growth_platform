@@ -12,16 +12,16 @@ export default async function LandingPage({ params }: Props) {
     await Promise.all([getPageBySlug(slug), getGlobal()]);
   if (!page) notFound();
 
-  const seo = page.seo ?? 
+  const seo = page.seo ??
     global?.defaultSeo;
-  const title = seo?.metaTitle ?? 
+  const title = seo?.metaTitle ??
     global?.siteName;
-  const description = seo?.metaDescription ?? 
+  const description = seo?.metaDescription ??
     global?.siteDescription ?? '';
   const image = mediaUrl(seo?.shareImage);
-  const url = seo?.canonicalURL || 
+  const url = seo?.canonicalURL ||
     `${LANDINGS_SSR_URL}/${slug}`;
-  const robots = `${seo?.noIndex ? 'noindex' : 'index'}, 
+  const robots = `${seo?.noIndex ? 'noindex' : 'index'},
     ${seo?.noFollow ? 'nofollow' : 'follow'}`;
 
   return (
