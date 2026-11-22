@@ -1,27 +1,4 @@
-import type { StrapiLink, Media, Seo } from '@growth/strapi';
-
-export type Category = {
-  name?: string;
-  slug?: string;
-};
-
-export type Author = {
-  name?: string;
-};
-
-export type Article = {
-  id?: number;
-  documentId?: string;
-  title?: string;
-  slug?: string;
-  description?: string;
-  cover?: Media | null;
-  category?: Category | null;
-  author?: Author | null;
-  blocks?: Array<Record<string, unknown>>;
-  seo?: Seo | null;
-  publishedAt?: string | null;
-};
+import type { LinkVariant, StrapiLink, Media, Seo } from '@growth/strapi';
 
 export type HeroSection = {
   id: number;
@@ -116,11 +93,12 @@ export type AnnouncementBar = {
   id: number;
   text: string;
   isLive: boolean | null;
-  link: StrapiLink | null;
+  link: StrapiLink;
 };
 
 export type Header = {
   id: number;
+  siteName: string;
   logo: Media | null;
   navLinks: Array<StrapiLink>;
   searchPlaceholder: string | null;
@@ -154,4 +132,13 @@ export type Global = {
   announcementBar: AnnouncementBar | null;
   header: Header | null;
   footer: Footer | null;
+};
+
+export type LinkFields = {
+  label: string;
+  url: string;
+};
+
+export type ButtonLinkFields = LinkFields & {
+  variant: LinkVariant;
 };

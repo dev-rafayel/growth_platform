@@ -1,26 +1,35 @@
-import Link from 'next/link';
+import { getGlobal } from '@/lib/strapi/global';
+import { AnnouncementBar } from '@/components/layout/AnnouncementBar';
+import { mapAnnouncementBar } from '@/lib/strapi/mappers/announcementBarMapper';
+import { Header } from '@/components/layout/Header';
+import { mapHeader } from '@/lib/strapi/mappers/headerMapper';
+import { Footer } from '@/components/layout/Footer';
+import { mapFooter } from '@/lib/strapi/mappers/footerMapper';
 import './globals.css';
 
-export default function RootLayout({ children }: 
+export default async function RootLayout({ children }: 
   Readonly<{ children: React.ReactNode }>) {
+
+  const global = await getGlobal();
   return (
     <html lang="en">
-      <body>
-        <header className="site-header">
-          <Link className="wordmark" href="/" aria-label="Fieldnotes home">
-            <span className="wordmark-mark">F.</span>
-            <span>FIELDNOTES</span>
-          </Link>
-          <nav className="header-nav" aria-label="Main navigation">
-            <Link href="/">Journal</Link>
-            <a href="http://localhost:1337/admin" target="_blank" rel="noreferrer">CMS <span aria-hidden="true">↗</span></a>
-          </nav>
-        </header>
+      <body className='bg-bg font-sans text-ink'>
+        {global?.announcementBar &&
+          <AnnouncementBar 
+            {...mapAnnouncementBar(global.announcementBar)}
+          />
+        }
+        {global?.header && (
+          <Header
+            {...mapHeader(global.header, global.siteName)}
+          />
+        )}
         {children}
-        <footer className="site-footer">
-          <span>FIELDNOTES / GROWTH PLATFORM</span>
-          <span>Stories for curious minds.</span>
-        </footer>
+        {global?.footer && (
+          <Footer
+            {...mapFooter(global.footer, global.siteName)}
+          />
+        )}
       </body>
     </html>
   );
