@@ -1,4 +1,4 @@
-import type { StrapiLink, Media, Seo } from '@growth/strapi';
+import type { LinkVariant, StrapiLink, Media, Seo } from '@growth/strapi';
 
 export type Category = {
   name?: string;
@@ -116,11 +116,12 @@ export type AnnouncementBar = {
   id: number;
   text: string;
   isLive: boolean | null;
-  link: StrapiLink | null;
+  link: StrapiLink;
 };
 
 export type Header = {
   id: number;
+  siteName: string;
   logo: Media | null;
   navLinks: Array<StrapiLink>;
   searchPlaceholder: string | null;
@@ -154,4 +155,13 @@ export type Global = {
   announcementBar: AnnouncementBar | null;
   header: Header | null;
   footer: Footer | null;
+};
+
+export type LinkFields = {
+  label: string;
+  url: string;
+};
+
+export type ButtonLinkFields = LinkFields & {
+  variant: LinkVariant;
 };

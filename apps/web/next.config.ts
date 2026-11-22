@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
     // Keep optimized covers for 30 days so they survive Strapi downtime.
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
+  // The "home" landing page is served at /, so /home is only a duplicate.
+  async redirects() {
+    return [{ source: '/home', destination: '/', permanent: true }];
+  },
   // Checked before dynamic routes, so app/[slug] never catches /blog.
   async rewrites() {
     return [

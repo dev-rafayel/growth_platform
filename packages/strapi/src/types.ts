@@ -32,11 +32,13 @@ export type Seo = {
   noFollow: boolean | null;
 };
 
+export type LinkVariant = 'accent' | 'dark' | 'outline' | 'text';
+
 export type StrapiLink = {
   id: number;
   label: string;
   url: string;
-  variant: 'accent' | 'dark' | 'outline' | 'text' | null;
+  variant: LinkVariant | null;
   isExternal: boolean | null;
   highlight: boolean | null;
 };
