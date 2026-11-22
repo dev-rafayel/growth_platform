@@ -11,9 +11,9 @@ export function mapHero(section: HeroSection): HeroProps {
     buttonText: section.buttonText,
     buttonUrl: section.buttonUrl,
     background: backgroundSrc ?
-    { 
-    src: backgroundSrc, 
-    alt: section.background?.alternativeText ?? '' 
-    } : null
+      { 
+        src: backgroundSrc, 
+        alt: section.background?.alternativeText ?? '' 
+      } : null
   };
 }

@@ -1,7 +1,15 @@
 import { Fragment, type ReactNode } from 'react';
 import type { Block, Registry } from './types';
 
-export function SectionRenderer<B extends Block>({ sections, registry }: { sections: B[]; registry: Registry<B> }) {
+type SectionRendererProps<B extends Block> = {
+  sections: B[];
+  registry: Registry<B>;
+};
+
+export function SectionRenderer<B extends Block>({
+  sections,
+  registry,
+}: SectionRendererProps<B>) {
   if (!sections) {
     console.warn('Sections are empty');
     return null;

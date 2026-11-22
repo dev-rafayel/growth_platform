@@ -8,14 +8,16 @@ import { componentRegistration } from '@/lib/strapi/registration';
 import { PostHeader } from '@/components/PostHeader/PostHeader';
 import type { Props } from './types';
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props):
+  Promise<Metadata> {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
 
   // seo is optional on posts: fall back to the post's own title and excerpt.
   const title = post.seo?.metaTitle ?? post.title;
-  const description = post.seo?.metaDescription ?? post.description ?? undefined;
+  const description =
+    post.seo?.metaDescription ?? post.description ?? undefined;
   const image = mediaUrl(post.seo?.shareImage) ?? mediaUrl(post.cover);
 
   return {
