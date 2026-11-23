@@ -3,7 +3,7 @@ import { styles } from './styles';
 
 export function FAQ({ title, items }: FaqProps) {
   return (
-    <section key={styles.section}>
+    <section className={styles.section}>
       <h2 className={styles.title}>
         {title}
       </h2>
