@@ -12,3 +12,7 @@ export type HeaderProps = {
   signInLink: ButtonLinkFields | null;
   joinLink: ButtonLinkFields | null;
 };
+
+export type SearchInputProps = {
+  placeholder: string;
+};

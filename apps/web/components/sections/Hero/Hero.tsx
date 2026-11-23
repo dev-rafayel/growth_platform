@@ -32,7 +32,9 @@ export function Hero({
             {title}
           </h1>
           {description && (
-            <p className={styles.description}>{description}</p>
+            <p className={styles.description}>
+              {description}
+            </p>
           )}
         </div>
         {buttonText && buttonUrl && (

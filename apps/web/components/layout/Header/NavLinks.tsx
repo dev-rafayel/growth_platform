@@ -35,7 +35,8 @@ function NavItem({ label, url, highlight }: NavLink) {
   return (
     <Link 
       href={url} 
-      className={styles.navLink}>
+      className={styles.navLink}
+    >
       {content}
     </Link>
   );
@@ -47,7 +48,8 @@ export function NavLinks({ links }: NavLinksProps) {
   return (
     <nav 
       aria-label="Main" 
-      className={styles.nav}>
+      className={styles.nav}
+    >
       {links.map((link, i) => (
         <NavItem 
           key={`${link.url}-${i}`} 

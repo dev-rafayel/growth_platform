@@ -1,8 +1,5 @@
 import { styles } from './styles';
-
-type SearchInputProps = {
-  placeholder: string;
-};
+import { SearchInputProps } from './types';
 
 // A plain GET form: works without JavaScript and keeps the header a
 // server component. Submitting goes to /search?q=...

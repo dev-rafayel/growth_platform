@@ -58,7 +58,8 @@ export function Header({
             {joinLink && (
               <Button 
                 href={joinLink.url} 
-                variant={joinLink.variant}>
+                variant={joinLink.variant}
+              >
                 {joinLink.label}
               </Button>
             )}

@@ -19,9 +19,15 @@ export function AuctionRow({
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <h2 className={styles.title}>{title}</h2>
+        <h2 className={styles.title}>
+          {title}
+        </h2>
+
         {link && (
-          <Link href={link.url} className={styles.link}>
+          <Link 
+            href={link.url} 
+            className={styles.link}
+          >
             {link.text}
             <svg
               aria-hidden="true"
@@ -42,7 +48,10 @@ export function AuctionRow({
       </div>
       <div className={styles.grid}>
         {items.map((card) => (
-          <article key={card.id} className={styles.card}>
+          <article 
+            key={card.id} 
+            className={styles.card}
+          >
             <div className={styles.imageBox}>
               {card.image && (
                 <Image
@@ -54,12 +63,20 @@ export function AuctionRow({
                 />
               )}
             </div>
+            
             <div className={styles.info}>
-              <span className={styles.category}>{card.category}</span>
-              <Link href={card.url} className={styles.cardTitle}>
+              <span className={styles.category}>
+                {card.category}
+              </span>
+              
+              <Link 
+                href={card.url} 
+                className={styles.cardTitle}
+              >
                 {card.title}
               </Link>
             </div>
+
             <div className={styles.footer}>
               <div className={styles.priceBox}>
                 <span className={styles.bidsLabel}>
