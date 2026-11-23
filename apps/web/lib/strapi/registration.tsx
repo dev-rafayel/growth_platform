@@ -9,12 +9,12 @@ import { Hero } from '@/components/sections/Hero';
 import { AuctionRow } from '@/components/sections/AuctionRow';
 import { CategoryGrid } from '@/components/sections/Category';
 import { CtaBand } from '@/components/sections/CTA';
-import { Faq } from '@/components/sections/FAQ';
+import { FAQ } from '@/components/sections/FAQ';
 
 export const componentRegistration: Registry<Section> = {
   'landing-page.hero': (block) => <Hero {...mapHero(block)} />,
   'landing-page.auction-row': (block) => <AuctionRow {...mapAuctionRow(block)} />,
   'landing-page.category-grid': (block) => <CategoryGrid {...mapCategoryGrid(block)} />,
   'landing-page.cta-band': (block) => <CtaBand {...mapCtaBand(block)} />,
-  'landing-page.faq': (block) => <Faq {...mapFaq(block)} />,
+  'landing-page.faq': (block) => <FAQ {...mapFaq(block)} />,
 };
