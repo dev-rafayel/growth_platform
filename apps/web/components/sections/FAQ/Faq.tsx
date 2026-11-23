@@ -1,15 +1,29 @@
 import { FaqProps } from './types';
+import { styles } from './styles';
 
-export function Faq({ title, items }: FaqProps) {
+export function FAQ({ title, items }: FaqProps) {
   return (
-    <section className="faq">
-      <h2 className="faq-title">{title}</h2>
+    <section className={styles.section}>
+      <h2 className={styles.title}>
+        {title}
+      </h2>
 
-      <div className="faq-list">
+      <div className={styles.list}>
         {items.map((item) => (
-          <details className="faq-item" key={item.id}>
-            <summary className="faq-question">{item.question}</summary>
-            <p className="faq-answer">{item.answer}</p>
+          <details 
+            className={styles.item}
+            key={item.id}>
+            <summary className={styles.question}>
+              {item.question}
+              <span 
+                className={styles.icon}
+                aria-hidden="true">
+                +
+              </span>
+            </summary>
+            <p className={styles.answer}>
+              {item.answer}
+            </p>
           </details>
         ))}
       </div>
