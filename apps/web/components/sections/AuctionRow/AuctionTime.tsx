@@ -1,8 +1,7 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { JetBrains_Mono } from 'next/font/google';
 
-const monoFont = JetBrains_Mono({ subsets: ['latin'], weight: ['600'] });
+import { useEffect, useState } from 'react';
+import { styles } from './styles';
 
 type AuctionTimeProps = {
   source: 'ending_soon' | 'newest';
@@ -15,9 +14,11 @@ function pad(n: number) {
 }
 
 function timeLeft(seconds: number) {
-  const h = Math.floor(seconds / 3600);
+  const d = Math.floor(seconds / 86400);
+  const h = Math.floor((seconds % 86400) / 3600);
   const m = Math.floor((seconds % 3600) / 60);
   const s = seconds % 60;
+  if (d > 0) return `${d}d ${pad(h)}h ${pad(m)}m`;
   return h > 0 ? `${h}h ${pad(m)}m ${pad(s)}s` : `${pad(m)}m ${pad(s)}s`;
 }
 
@@ -28,10 +29,10 @@ function listedAgo(seconds: number) {
   return `Listed ${Math.floor(seconds / 86400)}d ago`;
 }
 
-export function AuctionTime({ 
-  source, 
-  endsAt, 
-  listedAt 
+export function AuctionTime({
+  source,
+  endsAt,
+  listedAt,
 }: AuctionTimeProps) {
   const [now, setNow] = useState<number | null>(null);
   useEffect(() => {
@@ -39,44 +40,29 @@ export function AuctionTime({
     const timer = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(timer);
   }, []);
-  const date = source === 'newest' ? 
-    listedAt : endsAt;
+
+  const date = source === 'newest' ? listedAt : endsAt;
   if (!date || now === null) return null;
+
   if (source === 'newest') {
     const ago = Math.floor((now - date.getTime()) / 1000);
     return (
-      <span
-        className={monoFont.className}
-        style={{ 
-          fontSize: 13, 
-          color: '#5E5B55' }}
-      >
+      <span className={`${styles.time} ${styles.timeListed}`}>
         {listedAgo(ago)}
       </span>
     );
   }
+
   const seconds = Math.floor((date.getTime() - now) / 1000);
   if (seconds <= 0) {
     return (
-      <span
-        className={monoFont.className}
-        style={{ 
-          fontSize: 13, 
-          color: '#141414' }}
-      >
-        Ended
-      </span>
+      <span className={`${styles.time} ${styles.timeNormal}`}>Ended</span>
     );
   }
+
+  const color = seconds < 3600 ? styles.timeUrgent : styles.timeNormal;
   return (
-    <span
-      className={monoFont.className}
-      style={{
-        fontSize: 13,
-        color: seconds < 3600 ? 
-          '#C7341A' : '#141414',
-      }}
-    >
+    <span className={`${styles.time} ${color}`}>
       {timeLeft(seconds)}
     </span>
   );

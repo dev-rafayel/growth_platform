@@ -5,9 +5,9 @@ import { mapAuctionRow } from './mappers/auctionRowMapper';
 import { mapCategoryGrid } from './mappers/categoryGridMapper';
 import { mapCtaBand } from './mappers/ctaBandMapper';
 import { mapFaq } from './mappers/faqMapper';
-import { Hero } from '@/components/sections/Hero/Hero';
-import { AuctionRow } from '@/components/sections/AuctionRow/AuctionRow';
-import { CategoryGrid } from '@/components/sections/Category/CategoryGrid';
+import { Hero } from '@/components/sections/Hero';
+import { AuctionRow } from '@/components/sections/AuctionRow';
+import { CategoryGrid } from '@/components/sections/Category';
 import { CtaBand } from '@/components/sections/CTA/CtaBand';
 import { Faq } from '@/components/sections/FAQ/Faq';
 
