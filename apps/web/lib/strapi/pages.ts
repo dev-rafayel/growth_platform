@@ -10,6 +10,7 @@ export async function getPageBySlug(slug: string):
     'populate[sections][on][landing-page.category-grid][populate]': '*',
     'populate[sections][on][landing-page.cta-band][populate]': '*',
     'populate[sections][on][landing-page.faq][populate]': '*',
+    'populate[sections][on][landing-page.how-to][populate]': '*',
     'populate[seo][populate]': '*',
   };
 

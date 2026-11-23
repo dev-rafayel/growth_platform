@@ -17,4 +17,5 @@ export const componentRegistration: Registry<Section> = {
   'landing-page.category-grid': (block) => <CategoryGrid {...mapCategoryGrid(block)} />,
   'landing-page.cta-band': (block) => <CtaBand {...mapCtaBand(block)} />,
   'landing-page.faq': (block) => <FAQ {...mapFaq(block)} />,
+  // 'landing-page.how-to': (block) =>
 };
