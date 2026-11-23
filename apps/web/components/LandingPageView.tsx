@@ -4,6 +4,10 @@ import { SectionRenderer } from '@growth/strapi/renderer';
 import { getPageBySlug } from '@/lib/strapi/pages';
 import { getGlobal } from '@/lib/strapi/global';
 import { componentRegistration } from '@/lib/strapi/registration';
+import {
+  buildStructuredData,
+  toJsonLd,
+} from '@/lib/strapi/structuredData';
 
 type LandingPageViewProps = {
   // Strapi slug of the landing-page entry
@@ -31,11 +35,15 @@ export async function LandingPageView({
     seo?.noIndex ? 'noindex' : 'index',
     seo?.noFollow ? 'nofollow' : 'follow',
   ].join(', ');
+  const structuredData =
+    buildStructuredData(page, global, { url, title, description });
 
   return (
     <main>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {seo?.keywords && 
+        <meta name="keywords" content={seo.keywords} />}
       <link rel="canonical" href={url} />
       <meta name="robots" content={robots} />
       <meta property="og:type" content="website" />
@@ -50,6 +58,17 @@ export async function LandingPageView({
         <meta property="og:site_name" content={global.siteName} />
       )}
       <meta property="og:locale" content="en_US" />
+      <meta
+        name="twitter:card"
+        content={image ? 'summary_large_image' : 'summary'}
+      />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      {image && <meta name="twitter:image" content={image} />}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: toJsonLd(structuredData) }}
+      />
       <SectionRenderer
         sections={page.sections}
         registry={componentRegistration}
