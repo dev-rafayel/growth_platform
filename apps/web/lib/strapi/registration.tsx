@@ -8,7 +8,7 @@ import { mapFaq } from './mappers/faqMapper';
 import { Hero } from '@/components/sections/Hero';
 import { AuctionRow } from '@/components/sections/AuctionRow';
 import { CategoryGrid } from '@/components/sections/Category';
-import { CtaBand } from '@/components/sections/CTA/CtaBand';
+import { CtaBand } from '@/components/sections/CTA';
 import { Faq } from '@/components/sections/FAQ/Faq';
 
 export const componentRegistration: Registry<Section> = {
