@@ -2,12 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { styles } from './styles';
-
-type AuctionTimeProps = {
-  source: 'ending_soon' | 'newest';
-  endsAt: Date | null;
-  listedAt: Date | null;
-};
+import type { AuctionTimeProps } from './types';
 
 function pad(n: number) {
   return String(n).padStart(2, '0');

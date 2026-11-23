@@ -2,16 +2,22 @@ import Link from 'next/link';
 import type { CategoryGridProps } from './types';
 import { styles } from './styles';
 
-export function CategoryGrid({ title, link, items }: CategoryGridProps) {
+export function CategoryGrid({ 
+  title, 
+  link, 
+  items }: 
+  CategoryGridProps) {
   return (
-    <section 
-      id="categories" 
+    <section
+      id="categories"
       className={styles.section}>
       <div className={styles.header}>
-        <h2 className={styles.title}>{title}</h2>
+        <h2 className={styles.title}>
+          {title}
+        </h2>
         {link && (
-          <Link 
-            href={link.url} 
+          <Link
+            href={link.url}
             className={styles.link}>
             {link.text}
             <svg
@@ -39,8 +45,9 @@ export function CategoryGrid({ title, link, items }: CategoryGridProps) {
             className={styles.card}
           >
             <div className={styles.body}>
-              <span 
-                className={styles.name}>{category.title}</span>
+              <span className={styles.name}>
+                {category.title}
+              </span>
               <span className={styles.description}>
                 {category.description}
               </span>

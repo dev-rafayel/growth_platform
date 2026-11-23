@@ -16,3 +16,9 @@ export type AuctionRowProps = {
   link: { text: string; url: string } | null;
   items: Array<AuctionCardProps>;
 };
+
+export type AuctionTimeProps = {
+  source: 'ending_soon' | 'newest';
+  endsAt: Date | null;
+  listedAt: Date | null;
+};

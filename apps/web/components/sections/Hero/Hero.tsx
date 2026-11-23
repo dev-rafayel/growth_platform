@@ -22,9 +22,14 @@ export function Hero({
           className={styles.image}
         />
       )}
-      <div aria-hidden="true" className={styles.overlay} />
+      <div
+        aria-hidden="true"
+        className={styles.overlay}
+      />
       <div className={styles.content}>
-        <h1 className={styles.title}>{title}</h1>
+        <h1 className={styles.title}>
+          {title}
+        </h1>
         {description && (
           <p className={styles.description}>{description}</p>
         )}
