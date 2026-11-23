@@ -140,7 +140,7 @@ export type HowToStep = {
   id: number;
   title: string;
   description: string;
-}
+};
 
 export type HowToSection = {
   id: number;
@@ -148,6 +148,16 @@ export type HowToSection = {
   description: string | null;
   steps: Array<HowToStep>;
   __component: 'landing-page.how-to';
+};
+
+export type PageInfo = {
+  url: string;
+  title: string | undefined;
+  description: string;
+};
+
+export type PageSummary = Pick<LandingPage, 'slug' | 'updatedAt'> & {
+  seo: { noIndex: boolean | null } | null;
 };
 
 // In case of creating anything, create above Section
