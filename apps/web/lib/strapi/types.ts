@@ -148,3 +148,7 @@ export type PageInfo = {
   title: string | undefined;
   description: string;
 };
+
+export type PageSummary = Pick<LandingPage, 'slug' | 'updatedAt'> & {
+  seo: { noIndex: boolean | null } | null;
+};
