@@ -3,7 +3,7 @@ const focus =
   'focus-visible:outline-accent';
 
 export const styles = {
-  header: 'border-b border-line bg-bg',
+  header: 'sticky top-0 z-50 border-b border-line bg-bg',
   inner:
     'mx-auto flex max-w-page flex-wrap items-center ' +
     'gap-x-8 gap-y-4 px-6 py-[18px]',

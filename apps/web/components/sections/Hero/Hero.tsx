@@ -27,12 +27,14 @@ export function Hero({
         className={styles.overlay}
       />
       <div className={styles.content}>
-        <h1 className={styles.title}>
-          {title}
-        </h1>
-        {description && (
-          <p className={styles.description}>{description}</p>
-        )}
+        <div className={styles.text}>
+          <h1 className={styles.title}>
+            {title}
+          </h1>
+          {description && (
+            <p className={styles.description}>{description}</p>
+          )}
+        </div>
         {buttonText && buttonUrl && (
           <Button
             href={buttonUrl}
