@@ -29,6 +29,8 @@ export async function LandingPageView({
   const title = seo?.metaTitle ?? global?.siteName;
   const description =
     seo?.metaDescription ?? global?.siteDescription ?? '';
+  const socialTitle = seo?.ogTitle || title;
+  const socialDescription = seo?.ogDescription || description;
   const image = mediaUrl(seo?.shareImage);
   const url = seo?.canonicalURL || `${LANDINGS_SSR_URL}/${path}`;
   const robots = [
@@ -47,8 +49,8 @@ export async function LandingPageView({
       <link rel="canonical" href={url} />
       <meta name="robots" content={robots} />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={socialTitle} />
+      <meta property="og:description" content={socialDescription} />
       <meta property="og:url" content={url} />
       {image && 
         <meta property="og:image" 
@@ -62,8 +64,8 @@ export async function LandingPageView({
         name="twitter:card"
         content={image ? 'summary_large_image' : 'summary'}
       />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:title" content={socialTitle} />
+      <meta name="twitter:description" content={socialDescription} />
       {image && <meta name="twitter:image" content={image} />}
       <script
         type="application/ld+json"

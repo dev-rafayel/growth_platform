@@ -27,6 +27,8 @@ export type Seo = {
   metaTitle: string;
   metaDescription: string;
   keywords: string | null;
+  ogTitle: string | null;
+  ogDescription: string | null;
   shareImage: Media | null;
   canonicalURL: string | null;
   noIndex: boolean | null;
