@@ -1,24 +1,60 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Button } from '@/components/ui/Button';
 import type { HeroProps } from './types';
+import { styles } from './styles';
 
-export function Hero({ 
-  title, 
-  description, 
-  buttonText, 
-  buttonUrl, 
-  background 
+export function Hero({
+  title,
+  description,
+  buttonText,
+  buttonUrl,
+  background,
 }: HeroProps) {
   return (
-    <section className="hero">
+    <section className={styles.section}>
       {background && (
-        <Image className="hero-bg" src={background.src} alt={background.alt} fill sizes="100vw" priority />
+        <Image
+          src={background.src}
+          alt={background.alt}
+          fill
+          sizes="100vw"
+          priority
+          className={styles.image}
+        />
       )}
-      <div className="hero-inner">
-        <h1 className="hero-title">{title}</h1>
-        {description && <p className="hero-copy">{description}</p>}
+      <div
+        aria-hidden="true"
+        className={styles.overlay}
+      />
+      <div className={styles.content}>
+        <h1 className={styles.title}>
+          {title}
+        </h1>
+        {description && (
+          <p className={styles.description}>{description}</p>
+        )}
         {buttonText && buttonUrl && (
-          <Link className="hero-btn" href={buttonUrl}>{buttonText}</Link>
+          <Button
+            href={buttonUrl}
+            variant="accent"
+            className={styles.button}
+          >
+            {buttonText}
+            <svg
+              aria-hidden="true"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M5 12h14" />
+              <path d="M13 6l6 6-6 6" />
+            </svg>
+          </Button>
         )}
       </div>
     </section>
