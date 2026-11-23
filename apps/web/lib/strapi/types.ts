@@ -142,3 +142,13 @@ export type LinkFields = {
 export type ButtonLinkFields = LinkFields & {
   variant: LinkVariant;
 };
+
+export type PageInfo = {
+  url: string;
+  title: string | undefined;
+  description: string;
+};
+
+export type PageSummary = Pick<LandingPage, 'slug' | 'updatedAt'> & {
+  seo: { noIndex: boolean | null } | null;
+};
