@@ -9,7 +9,7 @@ import { Hero } from '@/components/sections/Hero';
 import { AuctionRow } from '@/components/sections/AuctionRow';
 import { CategoryGrid } from '@/components/sections/Category';
 import { CtaBand } from '@/components/sections/CTA';
-import { Faq } from '@/components/sections/FAQ/Faq';
+import { Faq } from '@/components/sections/FAQ';
 
 export const componentRegistration: Registry<Section> = {
   'landing-page.hero': (block) => <Hero {...mapHero(block)} />,
