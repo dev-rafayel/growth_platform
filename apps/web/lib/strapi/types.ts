@@ -89,11 +89,19 @@ export type AnnouncementBar = {
   link: StrapiLink;
 };
 
+export type NavDropdown = {
+  id: number;
+  label: string;
+  url: string | null;
+  links: Array<StrapiLink>;
+};
+
 export type Header = {
   id: number;
   siteName: string;
   logo: Media | null;
   navLinks: Array<StrapiLink>;
+  auctionMenu: NavDropdown | null;
   searchPlaceholder: string | null;
   signInLink: StrapiLink | null;
   joinLink: StrapiLink | null;

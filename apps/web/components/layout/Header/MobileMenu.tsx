@@ -1,36 +1,20 @@
 'use client';
 
-import { useEffect, useState, type MouseEvent } from 'react';
-import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import { useCloseMenu } from '@/components/hooks';
 import type { MobileMenuProps } from './types';
 import { NavItem } from './NavLinks';
 import { styles } from './styles';
 
-export function MobileMenu({ links, actions }: MobileMenuProps) {
+export function MobileMenu({
+  links,
+  dropdown,
+  actions,
+}: MobileMenuProps) {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
+  const { closeOnLink } = useCloseMenu(open, setOpen);
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
-    };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [open]);
-
-  if (links.length === 0 && !actions) return null;
-
-  // Any link tap closes the menu, even when it points to the same page.
-  const closeOnLink = (e: MouseEvent<HTMLDivElement>) => {
-    if ((e.target as HTMLElement).closest('a')) {
-      setOpen(false);
-    }
-  };
+  if (links.length === 0 && !dropdown && !actions) return null;
 
   return (
     <>
@@ -66,8 +50,31 @@ export function MobileMenu({ links, actions }: MobileMenuProps) {
         className={styles.mobilePanel}
         onClick={closeOnLink}
       >
-        {links.length > 0 && (
+        {(links.length > 0 || dropdown) && (
           <nav aria-label="Mobile" className={styles.mobileNav}>
+            {dropdown && (
+              <div className={styles.mobileGroup}>
+                {dropdown.url ? (
+                  <NavItem
+                    label={dropdown.label}
+                    url={dropdown.url}
+                    highlight={false}
+                    className={styles.mobileNavLink}
+                  />
+                ) : (
+                  <p className={styles.mobileGroupLabel}>
+                    {dropdown.label}
+                  </p>
+                )}
+                {dropdown.links.map((link, i) => (
+                  <NavItem
+                    key={`${link.url}-${i}`}
+                    {...link}
+                    className={styles.mobileSubLink}
+                  />
+                ))}
+              </div>
+            )}
             {links.map((link, i) => (
               <NavItem
                 key={`${link.url}-${i}`}

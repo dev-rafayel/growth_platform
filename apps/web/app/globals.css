@@ -19,8 +19,8 @@
   --color-accent: #C7341A;
   --color-accent-hover: #A82B14;
   --color-live: #FF6A4D;
-  --color-navy: #1B2A4A;
-  --color-navy-hover: #111D36;
+  --color-navy: #032A58; /* rgb(3, 42, 88) */
+  --color-navy-hover: #021E40;
 
   --font-display: 'Bricolage Grotesque', sans-serif;
   --font-sans: Inter, system-ui, sans-serif;
