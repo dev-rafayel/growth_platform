@@ -52,8 +52,7 @@ export type CtaBandSection = {
   id: number;
   title: string;
   description: string;
-  buttonText: string;
-  buttonUrl: string;
+  link: StrapiLink | null;
   __component: 'landing-page.cta-band';
 };
 
