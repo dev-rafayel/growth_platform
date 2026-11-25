@@ -70,13 +70,6 @@ export type FaqSection = {
   __component: 'landing-page.faq';
 };
 
-export type Section =
-  | HeroSection
-  | AuctionRowSection
-  | CategoryGridSection
-  | CtaBandSection
-  | FaqSection;
-
 export type LandingPage = {
   id: number;
   documentId: string;
@@ -143,6 +136,20 @@ export type ButtonLinkFields = LinkFields & {
   variant: LinkVariant;
 };
 
+export type HowToStep = {
+  id: number;
+  title: string;
+  description: string;
+};
+
+export type HowToSection = {
+  id: number;
+  title: string;
+  description: string | null;
+  steps: Array<HowToStep>;
+  __component: 'landing-page.how-to';
+};
+
 export type PageInfo = {
   url: string;
   title: string | undefined;
@@ -152,3 +159,12 @@ export type PageInfo = {
 export type PageSummary = Pick<LandingPage, 'slug' | 'updatedAt'> & {
   seo: { noIndex: boolean | null } | null;
 };
+
+// In case of creating anything, create above Section
+export type Section =
+  | HeroSection
+  | AuctionRowSection
+  | CategoryGridSection
+  | CtaBandSection
+  | FaqSection
+  | HowToSection;
