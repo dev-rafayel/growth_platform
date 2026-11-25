@@ -1,12 +1,13 @@
 import Link from 'next/link';
-import type { NavLink } from './types';
+import type { NavLinksProps, NavItemProps } from './types';
 import { styles } from './styles';
 
-type NavLinksProps = {
-  links: Array<NavLink>;
-};
-
-function NavItem({ label, url, highlight }: NavLink) {
+export function NavItem({
+  label,
+  url,
+  highlight,
+  className = styles.navLink,
+}: NavItemProps) {
   const content = (
     <>
       {highlight && 
@@ -23,7 +24,7 @@ function NavItem({ label, url, highlight }: NavLink) {
     return (
       <a
         href={url}
-        className={styles.navLink}
+        className={className}
         target="_blank"
         rel="noreferrer"
       >
@@ -33,10 +34,7 @@ function NavItem({ label, url, highlight }: NavLink) {
   }
 
   return (
-    <Link 
-      href={url} 
-      className={styles.navLink}
-    >
+    <Link href={url} className={className}>
       {content}
     </Link>
   );
@@ -46,13 +44,9 @@ export function NavLinks({ links }: NavLinksProps) {
   if (links.length === 0) return null;
 
   return (
-    <nav 
-      aria-label="Main" 
-      className={styles.nav}
-    >
+    <nav className={styles.nav} aria-label="Main">
       {links.map((link, i) => (
-        <NavItem 
-          key={`${link.url}-${i}`} 
+        <NavItem key={`${link.url}-${i}`} 
           {...link}
         />
       ))}

@@ -25,7 +25,7 @@ const eslintConfig = [
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 1, 'maxBOF': 0 }],
       'max-len': ['error', {
-        code: 75,
+        code: 90,
         tabWidth: 2,
         ignoreUrls: true,
         ignoreStrings: true,

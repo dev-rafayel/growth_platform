@@ -35,7 +35,7 @@ export type Seo = {
   noFollow: boolean | null;
 };
 
-export type LinkVariant = 'accent' | 'dark' | 'outline' | 'text';
+export type LinkVariant = 'accent' | 'dark' | 'outline' | 'text' | 'navy';
 
 export type StrapiLink = {
   id: number;
