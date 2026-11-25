@@ -1,6 +1,7 @@
+import type { ButtonLinkFields } from '@/lib/strapi/types';
+
 export type CtaBandProps = {
   title: string;
   description: string;
-  buttonText: string;
-  buttonUrl: string;
+  link: ButtonLinkFields | null;
 };

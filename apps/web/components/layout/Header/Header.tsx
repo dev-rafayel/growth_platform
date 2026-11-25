@@ -11,6 +11,7 @@ export function Header({
   siteName,
   logo,
   navLinks,
+  auctionMenu,
   searchPlaceholder,
   signInLink,
   joinLink,
@@ -57,13 +58,17 @@ export function Header({
           </span>
         </Link>
 
-        <NavLinks links={navLinks} />
+        <NavLinks links={navLinks} dropdown={auctionMenu} />
 
         <SearchInput placeholder={searchPlaceholder} />
 
         {actions && <div className={styles.actions}>{actions}</div>}
 
-        <MobileMenu links={navLinks} actions={actions} />
+        <MobileMenu
+          links={navLinks}
+          dropdown={auctionMenu}
+          actions={actions}
+        />
       </div>
     </header>
   );

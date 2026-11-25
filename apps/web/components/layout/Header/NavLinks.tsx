@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { NavLinksProps, NavItemProps } from './types';
 import { styles } from './styles';
+import { DropDown } from './AuctionDropdown';
 
 export function NavItem({
   label,
@@ -40,11 +41,12 @@ export function NavItem({
   );
 }
 
-export function NavLinks({ links }: NavLinksProps) {
-  if (links.length === 0) return null;
+export function NavLinks({ links, dropdown }: NavLinksProps) {
+  if (links.length === 0 && !dropdown) return null;
 
   return (
     <nav className={styles.nav} aria-label="Main">
+      {dropdown && <DropDown {...dropdown} />}
       {links.map((link, i) => (
         <NavItem key={`${link.url}-${i}`} 
           {...link}

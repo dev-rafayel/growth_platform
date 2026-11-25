@@ -16,7 +16,7 @@ export const styles = {
   logo: 'size-[38px] rounded-[10px] object-cover',
   logoFallback:
     'flex size-[38px] items-center justify-center rounded-[10px] ' +
-    'bg-accent font-display text-lg font-extrabold text-white',
+    'bg-navy font-display text-lg font-extrabold text-white',
   siteName:
     'font-display text-[26px] font-extrabold tracking-[-0.03em]',
 
@@ -49,6 +49,11 @@ export const styles = {
   mobileNav: 'flex flex-col text-[17px] font-medium',
   mobileNavLink:
     'flex items-center gap-2 border-b border-line py-3.5 ' +
+    `hover:text-accent ${focus}`,
+  mobileGroup: 'flex flex-col border-b border-line pb-2',
+  mobileGroupLabel: 'py-3.5',
+  mobileSubLink:
+    'flex items-center gap-2 py-2.5 pl-4 text-[15px] text-muted ' +
     `hover:text-accent ${focus}`,
   mobileActions: 'mt-5 flex flex-col gap-2.5 w-full',
 };
