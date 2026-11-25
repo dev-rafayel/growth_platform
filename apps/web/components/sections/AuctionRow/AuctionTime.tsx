@@ -4,10 +4,13 @@ import { useEffect, useState } from 'react';
 import { styles } from './styles';
 import type { AuctionTimeProps } from './types';
 
+// adds '0' at left to number 
+// used for timer correctness
 function pad(n: number) {
   return String(n).padStart(2, '0');
 }
 
+// describes time by day, hour, minute and second
 function timeLeft(seconds: number) {
   const d = Math.floor(seconds / 86400);
   const h = Math.floor((seconds % 86400) / 3600);

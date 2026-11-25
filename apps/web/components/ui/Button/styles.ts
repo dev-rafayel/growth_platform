@@ -14,6 +14,7 @@ export const sizes: Record<ButtonSize, string> = {
 export const variants: Record<ButtonVariant, string> = {
   accent: 'rounded-full bg-accent text-white hover:bg-accent-hover',
   dark: 'rounded-full bg-ink text-bg hover:bg-ink-2',
+  navy: 'rounded-full bg-navy text-white hover:bg-navy-hover',
   outline:
     'rounded-full border-[1.5px] border-current ' +
     'hover:bg-ink hover:text-bg',
