@@ -17,7 +17,7 @@ export function Hero({
           src={background.src}
           alt={background.alt}
           fill
-          sizes="100vw"
+          sizes="calc(100vw - 48px)"
           priority
           className={styles.image}
         />

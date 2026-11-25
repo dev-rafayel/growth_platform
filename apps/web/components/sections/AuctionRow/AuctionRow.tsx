@@ -49,7 +49,7 @@ export function AuctionRow({
                   src={card.image.src}
                   alt={card.image.alt}
                   fill
-                  sizes="(max-width: 560px) 100vw, (max-width: 1100px) 50vw, 25vw"
+                  sizes="(max-width: 560px) calc(100vw - 48px), (max-width: 1100px) calc(50vw - 36px), 300px"
                   className={styles.image}
                 />
               )}
