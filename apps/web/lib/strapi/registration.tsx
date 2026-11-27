@@ -10,8 +10,8 @@ import { AuctionRow } from '@/components/sections/AuctionRow';
 import { CategoryGrid } from '@/components/sections/Category';
 import { CtaBand } from '@/components/sections/CTA';
 import { FAQ } from '@/components/sections/FAQ';
-import { HowTo } from '@/components/sections/HowTo';
-import { mapHowTo } from './mappers/howToMapper';
+import { Testimonial } from '@/components/sections/Testimonial';
+import { mapTestimonial } from './mappers/testimonialMapper';
 
 export const componentRegistration: Registry<Section> = {
   'landing-page.hero': (block) => <Hero {...mapHero(block)} />,
@@ -19,5 +19,5 @@ export const componentRegistration: Registry<Section> = {
   'landing-page.category-grid': (block) => <CategoryGrid {...mapCategoryGrid(block)} />,
   'landing-page.cta-band': (block) => <CtaBand {...mapCtaBand(block)} />,
   'landing-page.faq': (block) => <FAQ {...mapFaq(block)} />,
-  'landing-page.how-to': (block) => <HowTo {...mapHowTo(block)} />,
+  'landing-page.testimonial': (block) => <Testimonial {...mapTestimonial(block)} />,
 };
