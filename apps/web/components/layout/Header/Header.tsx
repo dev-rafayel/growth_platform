@@ -44,7 +44,7 @@ export function Header({
               width={38}
               height={38}
               className={styles.logo}
-              priority
+              loading="eager"
             />
           ) : (
             <span 

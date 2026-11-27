@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
   // @growth/strapi ships TypeScript sources, so Next compiles it like app code.
   transpilePackages: ['@growth/strapi'],
   images: {
+    formats: ['image/avif', 'image/webp'],
+    qualities: [60, 75],
     remotePatterns: [{
       protocol: strapi.protocol.replace(':', '') as 'http' | 'https',
       hostname: strapi.hostname,

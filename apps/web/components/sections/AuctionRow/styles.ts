@@ -12,7 +12,7 @@ export const styles = {
     'grid grid-cols-1 gap-6 min-[561px]:grid-cols-2 ' +
     'min-[1101px]:grid-cols-4',
   card: 'group flex flex-col gap-3.5',
-  imageBox: 'relative h-[260px] overflow-hidden rounded-2xl bg-[#D9D4CB]',
+  imageBox: 'relative aspect-square overflow-hidden rounded-2xl bg-[#D9D4CB]',
   image:
     'object-cover transition-transform duration-300 ease-in-out ' +
     'group-hover:scale-[1.02]',
