@@ -9,6 +9,9 @@ import { styles } from './styles';
 const MOBILE_QUERY = '(max-width: 767px)';
 const DESKTOP_QUERY = '(min-width: 768px)';
 const SIZES = 'calc(100vw - 48px)';
+// A soft painting behind a dark overlay: 60 looks the same as 75
+// at about half the file size.
+const QUALITY = 60;
 
 export function HeroBackground({
   background,
@@ -21,6 +24,7 @@ export function HeroBackground({
     alt: desktop.alt,
     fill: true,
     sizes: SIZES,
+    quality: QUALITY,
     className: styles.image,
   };
   const { props: img } = getImageProps({
