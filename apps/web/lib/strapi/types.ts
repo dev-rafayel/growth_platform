@@ -7,6 +7,7 @@ export type HeroSection = {
   buttonText: string;
   buttonUrl: string;
   background: Media | null;
+  mobileBackground: Media | null;
   __component: 'landing-page.hero';
 };
 

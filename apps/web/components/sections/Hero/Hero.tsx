@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import type { HeroProps } from './types';
 import { styles } from './styles';
+import { HeroBackground } from './HeroBackground';
 
 export function Hero({
   title,
@@ -9,19 +9,14 @@ export function Hero({
   buttonText,
   buttonUrl,
   background,
+  mobileBackground,
 }: HeroProps) {
   return (
     <section className={styles.section}>
-      {background && (
-        <Image
-          src={background.src}
-          alt={background.alt}
-          fill
-          sizes="calc(100vw - 48px)"
-          priority
-          className={styles.image}
-        />
-      )}
+      <HeroBackground
+        background={background}
+        mobileBackground={mobileBackground}
+      />
       <div
         aria-hidden="true"
         className={styles.overlay}
